@@ -1,12 +1,12 @@
-name: Wenmoux-sync
+name: tom-sync
 on:
   schedule:
-    - cron: '1 */3 * * *'
+    - cron: '11 */3 * * *'
   workflow_dispatch:
   watch:
     types: started
   repository_dispatch:
-    types: sync-Wenmoux-JavaScript
+    types: sync-tom-JavaScript
 jobs:
   repo-sync:
     env:
@@ -18,11 +18,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync Wenmoux-JavaScript
+      - name: sync tom-JavaScript
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/Wenmoux/scripts.git"
-          source_branch: "wen"
-          destination_branch: "Wenmoux"
+          source_repo: "https://github.com/xl2101200/-.git"
+          source_branch: "main"
+          destination_branch: "Tom"
           github_token: ${{ secrets.PAT }}
