@@ -1,0 +1,36 @@
+ ## 作者名         smiek2221
+## 作者库名       jd_scripts
+## 作者分支名     master   
+## 同步分支名     smiek2221 （可自定义 ）
+
+smiek2221/scripts
+
+
+name: smiek2221
+on:
+  schedule:
+    - cron: '1 */3 * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+  repository_dispatch:
+    types: Jsmiek2221-scripts
+jobs:
+  repo-sync:
+    env:
+      PAT: ${{ secrets.PAT }} 
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: sync smiek2221-scripts
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/smiek2221/scripts.git"
+          source_branch: "master"
+          destination_branch: "smiek2221"
+          github_token: ${{ secrets.PAT }}
