@@ -3,9 +3,6 @@
 ## 作者分支名     master   
 ## 同步分支名     smiek2221 （可自定义 ）
 
-smiek2221/scripts
-
-
 name: smiek2221
 on:
   schedule:
